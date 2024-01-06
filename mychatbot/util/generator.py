@@ -11,7 +11,7 @@ from langchain.vectorstores import FAISS
 
 def ready():
     warnings.filterwarnings("ignore")
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = "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"
     doc_reader = PdfReader('./data/guide_1.pdf')
 
     # Read data from the PDF and split it into chunks
