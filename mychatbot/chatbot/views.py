@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
-
+from util import generator
 
 def process_text(request):
+    chain, docsearch = generator.ready()
+
     if request.method == 'POST':
         user_text = request.POST.get('text')
-        response_text = process_input(user_text)
+        response_text = process_input(chain, docsearch, user_text)
     else:
         response_text = ''  # Empty initial response
 
@@ -14,12 +15,10 @@ def process_text(request):
     return render(request, 'index.html', context)
 
 
-def process_input(text):
+def process_input(chain, docsearch, query):
     # Implement your text processing logic here
-    if text.lower() == 'hy':
-        return 'hello!'
-    else:
-        return 'I don\'t understand that.'
+    return generator.give_output(chain, docsearch, query)
+
 
 
 def index(request):
