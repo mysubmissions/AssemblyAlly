@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script>
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault();  // Prevent default form submission
+    // Send POST request using JavaScript (e.g., using fetch API)
+});
+
+    </script>
+
+</head>
+<body>
+<h1>Chat with the bot</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="text" placeholder="Enter your text">
+    <button type="submit">Send</button>
+</form>
+<div id="response">
+    {{ response_text }}
+</div>
+</body>
+</html>
