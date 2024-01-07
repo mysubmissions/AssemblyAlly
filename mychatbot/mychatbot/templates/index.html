@@ -75,9 +75,11 @@ div {
 <!--    https://raw.githubusercontent.com/shankarlohar/emergency/main/_2004_LAND_CRUISER_(RM1071U).png-->
 <!--        <img src="https://raw.githubusercontent.com/shankarlohar/emergency/main/_2004_LAND_CRUISER_(RM1071U).png" width="100" height="100" alt="Image from response">-->
 
-    {% for image_url in response_images %}
-    <img src="https://raw.githubusercontent.com/shankarlohar/emergency/main/{{image_url}}" width="100" height="100" alt="Image from response">
-    {% endfor %}
+    <div style="display: flex; flex-wrap: wrap;">
+  {% for image_url in response_images %}
+  <img src="https://raw.githubusercontent.com/shankarlohar/emergency/main/{{image_url}}" width="100" height="100" alt="Image from response" style="margin: 5px;">
+  {% endfor %}
+</div>
     <pre>
         {{ response_text }}
     </pre>
