@@ -77,8 +77,9 @@ div {
 
     <div style="display: flex; flex-wrap: wrap;">
   {% for image_url in response_images %}
-  <img class="invert" src="https://raw.githubusercontent.com/mysubmissions/AssemblyAlly/main/mychatbot/util/dataimage/{{image_url}}" width="100" height="100" alt="Image from response" style="margin: 5px;">
+    <img class="invert" src="https://raw.githubusercontent.com/mysubmissions/AssemblyAlly/main/mychatbot/util/dataimage/{{image_url}}" width="100" height="100" alt="Image from response" style="margin: 5px;">
   {% endfor %}
+
 </div>
     <pre>
         {{ response_text }}

@@ -4,7 +4,6 @@ import fitz  # PyMuPDF
 from PIL import Image
 import io
 import os
-import google.generativeai as genai
 
 
 def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target_size=(1000, 1000), name_limit=50):
@@ -66,3 +65,4 @@ def sanitize_filename(text):
 if __name__ == "__main__":
     pdf_path = '/Users/shankarlohar/Github/AssemblyAlly/mychatbot/data/guide_1.pdf'
     extract_images_with_keyword_names(pdf_path)
+

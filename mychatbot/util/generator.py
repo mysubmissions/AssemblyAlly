@@ -11,12 +11,13 @@ import os
 from PIL import Image
 import google.generativeai as genai
 
-from mychatbot.settings import BASE_DIR
+import google.generativeai as genai
+
 
 
 def ready():
     warnings.filterwarnings("ignore")
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = "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"
     doc_reader = PdfReader('./data/guide_1.pdf')
 
     # Read data from the PDF and split it into chunks
@@ -53,19 +54,13 @@ def give_output(chain, docsearch, query):
 def find_and_return_image(target_name):
     genai.configure(api_key='AIzaSyA8Jn6cFDCoaH6TNLyvOQvKck7fXxJkrNg')
     model = genai.GenerativeModel('gemini-pro')
-
     images = []
 
-    for filename in os.listdir('./util/dataimage'):
-
-        response = model.generate_content(
-            "if " + filename + " matches to the description: " + target_name + " just say 'Yes' else say 'No"
-        )
-        if 'yes' in response.text.lower():  # Case-insensitive comparison
-            image_path = os.path.join(BASE_DIR, filename)
-            images.append(image_path.split('/')[-1])
-
-    # If not found, return the dummy image
-    if len(images) == 0:
-        images.append('Image_not_available.png')
+    with open("mychatbot/templates/image.txt", "r") as file:
+        for line in file:
+            response = model.generate_content(
+                "if " + line.strip() + " matches to the description: " + target_name + " just say 'Yes' else say 'No"
+            )
+            if 'yes' in response.text.lower():  # Case-insensitive comparison
+                images.append(line.strip())
     return images
