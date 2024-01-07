@@ -4,6 +4,18 @@ from util import generator, gemini
 import PIL.Image
 
 
+def report(request):
+    chain, docsearch = generator.ready()
+
+    if request.method == 'POST':
+        response_text, response_images = process_input(chain, docsearch, "Generate a complete report of the document, give step by step pointers for each topic with what tools are important and what cautions to take")
+        context = {'response_text': response_text, 'response_images':response_images}
+    else:
+        response_text = ''  # Empty initial response
+
+        context = {'response_text': response_text}
+    return render(request, 'index.html', context)
+
 
 def process_image(request):
     chain, docsearch = generator.ready()
@@ -12,11 +24,12 @@ def process_image(request):
         uploaded_image = request.FILES['image']
         img = PIL.Image.open(uploaded_image)
         desc = gemini.give_desc(img)
-        response_text = process_input(chain, docsearch, desc)
+        response_text, response_images = process_input(chain, docsearch, desc)
+        context = {'response_text': response_text, 'response_images':response_images}
     else:
         response_text = ''  # Empty initial response
 
-    context = {'response_text': response_text}
+        context = {'response_text': response_text}
     return render(request, 'index.html', context)
 
 
@@ -26,11 +39,12 @@ def process_text(request):
     if request.method == 'POST':
         # Handle text input
         user_text = request.POST.get('text')
-        response_text = process_input(chain, docsearch, user_text)
+        response_text, response_images = process_input(chain, docsearch, user_text)
+        context = {'response_text': response_text, 'response_images':response_images}
     else:
         response_text = ''  # Empty initial response
 
-    context = {'response_text': response_text}
+        context = {'response_text': response_text}
     return render(request, 'index.html', context)
 
 

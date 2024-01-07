@@ -69,6 +69,12 @@ div {
 <body>
 <h1>Chat with the bot</h1>
 <div id="response">
+    <div id="response-images">
+        <img src="./dataimage/-_Air_Cleaner_Cap_-_12_1.png" alt="Image from response">
+        {% for image_url in response_images %}
+            <img src="{{ image_url }}" alt="Image from response">
+        {% endfor %}
+    </div>
      <pre>
         {{ response_text }}
     </pre>
@@ -82,6 +88,9 @@ div {
     <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;">  {% csrf_token %}
         <input type="file" name="image">
         <button type="submit">Upload Image</button>
+    </form>
+    <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;">  {% csrf_token %}
+        <button type="submit">Get Report</button>
     </form>
 </div>
 
