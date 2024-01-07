@@ -16,7 +16,7 @@ from mychatbot.settings import BASE_DIR
 
 def ready():
     warnings.filterwarnings("ignore")
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = "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"
     doc_reader = PdfReader('./data/guide_1.pdf')
 
     # Read data from the PDF and split it into chunks
