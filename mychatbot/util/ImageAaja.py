@@ -8,6 +8,10 @@ import google.generativeai as genai
 
 
 def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target_size=(1000, 1000), name_limit=50):
+
+    text_file = open("image.txt", "a")
+
+
     genai.configure(api_key='AIzaSyA8Jn6cFDCoaH6TNLyvOQvKck7fXxJkrNg')
     model = genai.GenerativeModel('gemini-pro')
 
@@ -25,6 +29,8 @@ def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target
         keywords = keywords_response.text.strip().split()  # Extract keywords from the response
         keywords_str = "_".join(keywords[:5])  # Limit to 5 keywords and join with underscores
 
+        i = 0
+
         for img_index, img_info in enumerate(images):
             img_index += 1
             img_index_str = f"{page_num + 1}_{img_index}"
@@ -35,17 +41,25 @@ def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target
             pil_img = pil_img.resize(target_size)
 
             # Use keywords and index as the image name, ensuring length limit
-            image_name = sanitize_filename(keywords_str[:name_limit]) + ".png"  # Truncate if needed
+            image_name = sanitize_filename(keywords_str[:name_limit])+ str(i) + ".png"  # Truncate if needed
+
+            text_file.write(image_name+"\n")
+
+            i+=1
+
+
             img_filename = os.path.join(image_folder, image_name)
             pil_img.save(img_filename)
 
             print(f"Image {img_index_str} extracted, resized, and saved as {img_filename}")
 
+    text_file.close()
+
     doc.close()
 
 
 def sanitize_filename(text):
-    filename = text.replace(" ", "_").replace('-', '').replace('/','') # Replace spaces with underscores
+    filename = text.replace(" ", "_").replace('-', '').replace('/', '')  # Replace spaces with underscores
     return filename
 
 
