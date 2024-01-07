@@ -16,7 +16,7 @@ from mychatbot.settings import BASE_DIR
 
 def ready():
     warnings.filterwarnings("ignore")
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = "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"
     doc_reader = PdfReader('./data/guide_1.pdf')
 
     # Read data from the PDF and split it into chunks
@@ -63,7 +63,7 @@ def find_and_return_image(target_name):
         )
         if 'yes' in response.text.lower():  # Case-insensitive comparison
             image_path = os.path.join(BASE_DIR, filename)
-            images.append(image_path)
+            images.append(image_path.split('/')[-1])
 
     # If not found, return the dummy image
     if len(images) == 0:

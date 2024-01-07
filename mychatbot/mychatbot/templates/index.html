@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Chatbot</title>
-        <style>
+    <style>
         body {
     display: flex;
     flex-direction: column;
@@ -55,6 +56,7 @@ div {
 
 
 
+
     </style>
     <script>
     const form = document.querySelector('form');
@@ -63,33 +65,34 @@ div {
         // Send POST request using JavaScript (e.g., using fetch API)
     });
 
+
     </script>
 
 </head>
 <body>
 <h1>Chat with the bot</h1>
 <div id="response">
-    <div id="response-images">
-        <img src="./dataimage/-_Air_Cleaner_Cap_-_12_1.png" alt="Image from response">
-        {% for image_url in response_images %}
-            <img src="{{ image_url }}" alt="Image from response">
-        {% endfor %}
-    </div>
-     <pre>
+<!--    https://raw.githubusercontent.com/shankarlohar/emergency/main/_2004_LAND_CRUISER_(RM1071U).png-->
+<!--        <img src="https://raw.githubusercontent.com/shankarlohar/emergency/main/_2004_LAND_CRUISER_(RM1071U).png" width="100" height="100" alt="Image from response">-->
+
+    {% for image_url in response_images %}
+    <img src="https://raw.githubusercontent.com/shankarlohar/emergency/main/{{image_url}}" width="100" height="100" alt="Image from response">
+    {% endfor %}
+    <pre>
         {{ response_text }}
     </pre>
 </div>
 <div style="display: flex; flex-direction: column;">
-    <form method="POST" style="margin-bottom: 15px;">  {% csrf_token %}
+    <form method="POST" style="margin-bottom: 15px;"> {% csrf_token %}
         <input type="text" name="text" placeholder="Enter your text">
         <button type="submit">Send</button>
     </form>
 
-    <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;">  {% csrf_token %}
+    <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;"> {% csrf_token %}
         <input type="file" name="image">
         <button type="submit">Upload Image</button>
     </form>
-    <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;">  {% csrf_token %}
+    <form method="POST" enctype="multipart/form-data" style="margin-bottom: 15px;"> {% csrf_token %}
         <button type="submit">Get Report</button>
     </form>
 </div>

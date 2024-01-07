@@ -3,6 +3,13 @@ from django.shortcuts import render
 from util import generator, gemini
 import PIL.Image
 
+# from chatbot.models import ImageModel
+
+
+# def your_view(request):
+#     response_images = ImageModel.objects.all()  # Retrieve all images
+#     context = {'response_images': response_images}
+#     return render(request, 'index.html', context)
 
 def report(request):
     chain, docsearch = generator.ready()
@@ -25,6 +32,7 @@ def process_image(request):
         img = PIL.Image.open(uploaded_image)
         desc = gemini.give_desc(img)
         response_text, response_images = process_input(chain, docsearch, desc)
+
         context = {'response_text': response_text, 'response_images':response_images}
     else:
         response_text = ''  # Empty initial response
