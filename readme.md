@@ -25,10 +25,38 @@ We built Assembly Ally which supports mechanics by:
 
 This reduces time wasted searching manuals and improves work efficiency.
 
+Prequisities
+Python 3.7+, Docker, an IDE like VS Code
+
+Installation
+Clone repo
+
+```git clone https://github.com/teamgengurus/assembly-ally.git```
+Install dependencies
+
+```pip install -r requirements.txt```
+
+Change Directory
+
+```cd mychatbot``` 
+
+Run Project
+
+```python manage.py runserver```
+
 ## Key Tech Stack
 
 - Langchain  
 - Django
-- Python   
+- Python
+- Tesseract-OCR
 - OpenAI Embeddings
 - Gemini Pro Vision API
+
+##Team Members
+- Shankar Lohar
+- Shubham Tejani
+- Cyril Souza
+- Rishabh Mathur
+- Debabrata Mohapatra
+
