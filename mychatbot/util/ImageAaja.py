@@ -7,7 +7,7 @@ import os
 import google.generativeai as genai
 
 
-def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target_size=(300, 301), name_limit=50):
+def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target_size=(1000, 1000), name_limit=50):
     genai.configure(api_key='AIzaSyA8Jn6cFDCoaH6TNLyvOQvKck7fXxJkrNg')
     model = genai.GenerativeModel('gemini-pro')
 
@@ -45,7 +45,7 @@ def extract_images_with_keyword_names(pdf_path, image_folder="dataimage", target
 
 
 def sanitize_filename(text):
-    filename = text.replace(" ", "_").replace('-', '')  # Replace spaces with underscores
+    filename = text.replace(" ", "_").replace('-', '').replace('/','') # Replace spaces with underscores
     return filename
 
 
