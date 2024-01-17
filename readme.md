@@ -4,9 +4,9 @@ Assembly Ally is an AI-powered conversational assistant that helps mechanics and
 
 
 ## Demo Video
-[<img src="images/video_thumbnail.png">](https://youtu.be/v4e2r_WvIgo?si=pacxn3FUkhhsdCWY)
 
-[YouTube Video Link](https://youtu.be/v4e2r_WvIgo?si=pacxn3FUkhhsdCWY)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/v4e2r_WvIgo/0.jpg)](https://www.youtube.com/watch?v=v4e2r_WvIgo)
+
 
 ## Problem Statement
 
