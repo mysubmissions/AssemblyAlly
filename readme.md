@@ -1,3 +1,7 @@
+![image](https://github.com/shankarlohar/AssemblyAlly/assets/74100292/d4fb20c1-8051-42ed-9354-c7004de1105c)
+
+
+
 # Assembly Ally
 
 Assembly Ally is an AI-powered conversational assistant that helps mechanics and technicians assemble and repair vehicles using instructional manuals. It was built by Team GenGurus at Techolution Hackathon 2023.
